@@ -1,0 +1,24 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.App {
+    @include flex;
+    height: 100vh;
+}
+
+.sidebar {
+    height: 100%;
+    width: $sidebar-width;
+    background: teal;
+
+}
+
+.main {
+    height: 100%;
+    width: calc(100vw - $sidebar-width);
+}
