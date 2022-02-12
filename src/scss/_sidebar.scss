@@ -1,0 +1,182 @@
+.sidebar {
+    @include flex($pos: null, $col: true);
+    color: $sidebar-font-color;
+    font-size: .8rem;
+    font-weight: 300;
+    overflow: hidden;
+
+    // scrollbar that shows only on hover
+    &:hover {
+        overflow: overlay;
+    }
+
+    &::-webkit-scrollbar {
+        width: .5rem;
+    }
+    &::-webkit-scrollbar-track {
+        background: $sidebar-bg-dark;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: $primary-color;
+        border-radius: 100vw;
+    }
+
+    &__user {
+        @include flex($gap: .5rem, $col: true);
+        width: 100%;
+        padding: 1rem 0;
+
+        &-avatar {
+            position: relative;
+            border-radius: 50%;
+
+            img {
+                display: block;
+                height: 75px;
+                border-radius: 50%;
+                border: .25rem solid $sidebar-font-color;
+            }
+
+            .user-online {
+                position: absolute;
+                top: 5%;
+                right: 10%;
+                background: $primary-color;
+                height: 0.75rem;
+                aspect-ratio: 1;
+                border-radius: 50%;
+            }
+        }
+
+        &-name {
+            font-size: .9rem;
+        }
+
+        &-actions {
+            @include flex($gap: .25rem);
+            margin-top: .25rem;
+
+            .action-wrapper {
+                @include flex;
+                height: 1.8rem;
+                aspect-ratio: 1;
+                border-radius: 50%;
+                background: $sidebar-bg-dark;
+                cursor: pointer;
+
+                &:hover {
+                    svg {
+                        animation: action-bounce .4s ease-in-out;
+                    }
+                }
+            }
+
+        }
+    }
+
+    &__activities {
+        @include flex($col: true);
+        width: 100%;
+
+        .activity-wrapper {
+            width: 100%;
+            overflow: hidden;
+
+            & .dropdown-menu {
+                height: 0;
+                transition: .3s ease-in-out;
+
+                .dropdown-item {
+                    margin-left: 2rem;
+                }
+            } 
+
+            &.active {
+                background: $sidebar-bg-dark;
+
+                .dropdown-icon {
+                    transition: .4s ease-in-out;
+                    transform: rotate(-90deg);
+                }
+
+                .dropdown-menu {
+                    animation: accordion .4s ease-in-out forwards;
+                }
+
+                span {
+                    color: white;
+                }
+            }
+        }
+
+        .activity {
+            @include flex($pos: space-between);
+            padding: .8rem 1rem;
+            width: 100%;
+            font-weight: bold;
+            cursor: pointer;
+            transition: .3s ease-in-out;
+
+            &:hover {
+                background: $sidebar-bg-dark;
+            }
+
+            svg {
+                color: $primary-color;
+
+                &:not(.dropdown-icon) {
+                    font-size: 1rem;
+                }
+            }
+
+            &-title {
+                @include flex($gap: .5rem);
+            }
+
+            &-notification {
+                padding: .1rem .5rem;
+                font-size: .8rem;
+                color: white;
+                background: #e49b2d;
+                font-weight: 400;
+                border-radius: 100vw;
+            }
+        }
+    }
+
+    &__properties {
+        @include flex($gap: .9rem, $col: true);
+        padding: .5rem 1rem;
+        width: 100%;
+
+        .properties-wrapper {
+            @include flex($gap: .5rem, $col: true);
+            width: 100%;
+
+            &:hover {
+                .properties-progress {
+                    animation: load-progress .75s ease-in-out reverse;
+                }
+            }
+
+            .properties-header {
+                @include flex($pos: space-between);
+                width: 100%;
+            }
+
+            .properties-progress-wrapper {
+                position: relative;
+                height: .5rem;
+                width: 100%;
+                background: $sidebar-bg-dark;
+                border-radius: 100vw;
+
+                .properties-progress {
+                    position: absolute;
+                    inset: 0;
+                    border-radius: 100vw;
+                }
+            }
+        }
+    }
+}
