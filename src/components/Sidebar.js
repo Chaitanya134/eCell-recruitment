@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { BiUser, BiWrench } from "react-icons/bi"
-import { AiOutlinePoweroff, AiOutlineLineChart } from "react-icons/ai"
+import { AiOutlinePoweroff } from "react-icons/ai"
 import { MdMonitor } from "react-icons/md"
 import { HiOutlineMail } from "react-icons/hi"
 import { RiPagesLine } from "react-icons/ri"
 import { FaRegPaperPlane, FaWpforms } from "react-icons/fa"
 import { FiDatabase } from "react-icons/fi"
-import { BsPencil } from "react-icons/bs"
+import { BsPencil, BsBarChart } from "react-icons/bs"
 import Activity from './Activity'
 
-const Sidebar = () => {
+const Sidebar = ({ showSidebar }) => {
 
     const [userName, setUserName] = useState("");
     const [userOnline, setUserOnline] = useState(false);
@@ -71,7 +71,7 @@ const Sidebar = () => {
             },
             {
                 name: "Charts",
-                icon: <AiOutlineLineChart />,
+                icon: <BsBarChart />,
                 hasChildActivity: true
             },
             {
@@ -84,7 +84,7 @@ const Sidebar = () => {
     }, [])
 
     return (
-        <div className='sidebar'>
+        <div className={'sidebar ' + (showSidebar ? "show" : "")}>
             <div className='sidebar__user'>
                 <div className='sidebar__user-avatar'>
                     <img src='https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200' alt='avatar' />

@@ -11,7 +11,7 @@
 }
 
 .App {
-    @include flex;
+    @include flex($pos: null);
     height: 100vh;
 }
 
@@ -19,10 +19,17 @@
     height: 100%;
     width: $sidebar-width;
     background: $sidebar-bg;
+    transition: 1s ease-in-out;
+    width: 0;
+
+    &.show {
+        width: $sidebar-width;
+    }
 
 }
 
 .main {
+    flex-grow: 1;
     height: 100%;
     width: calc(100vw - $sidebar-width);
 }

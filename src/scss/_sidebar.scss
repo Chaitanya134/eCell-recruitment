@@ -75,7 +75,8 @@
     }
 
     &__activities {
-        @include flex($col: true);
+        @include flex($pos: null, $col: true);
+        flex-grow: 1;
         width: 100%;
 
         .activity-wrapper {
@@ -145,8 +146,8 @@
     }
 
     &__properties {
-        @include flex($gap: .9rem, $col: true);
-        padding: .5rem 1rem;
+        @include flex($gap: .75rem, $col: true);
+        padding: .5rem 1rem 1rem;
         width: 100%;
 
         .properties-wrapper {
