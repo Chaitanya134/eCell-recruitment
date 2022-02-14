@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { BiUser, BiWrench } from "react-icons/bi"
-import { AiOutlinePoweroff } from "react-icons/ai"
+import { AiOutlinePoweroff, AiOutlineClose } from "react-icons/ai"
 import { MdMonitor } from "react-icons/md"
 import { HiOutlineMail } from "react-icons/hi"
 import { RiPagesLine } from "react-icons/ri"
@@ -9,7 +9,7 @@ import { FiDatabase } from "react-icons/fi"
 import { BsPencil, BsBarChart } from "react-icons/bs"
 import Activity from './Activity'
 
-const Sidebar = ({ showSidebar }) => {
+const Sidebar = ({ showSidebar, setShowSidebar }) => {
 
     const [userName, setUserName] = useState("");
     const [userOnline, setUserOnline] = useState(false);
@@ -86,6 +86,9 @@ const Sidebar = ({ showSidebar }) => {
     return (
         <div className={'sidebar ' + (showSidebar ? "show" : "")}>
             <div className='sidebar__user'>
+                <div className="sidebar-close"  onClick={() => setShowSidebar(false)}>
+                    <AiOutlineClose />
+                </div>
                 <div className='sidebar__user-avatar'>
                     <img src='https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200' alt='avatar' />
                     {
@@ -111,17 +114,17 @@ const Sidebar = ({ showSidebar }) => {
                 {
                     activities.map((activity, index) => {
                         let active = index === activeIndex ? "active" : "";
-                        return(
-                        <Activity
-                            key={index}
-                            name={activity.name}
-                            icon={activity.icon}
-                            hasChildActivity={activity.hasChildActivity}
-                            isActive={active}
-                            notification={activity.notification}
-                            onClick={() => setActiveIndex(index)}
-                        />
-                    )
+                        return (
+                            <Activity
+                                key={index}
+                                name={activity.name}
+                                icon={activity.icon}
+                                hasChildActivity={activity.hasChildActivity}
+                                isActive={active}
+                                notification={activity.notification}
+                                onClick={() => setActiveIndex(index)}
+                            />
+                        )
                     })
                 }
             </div>

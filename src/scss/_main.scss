@@ -157,14 +157,19 @@
         }
 
         .cards {
-            @include flex($gap: 1.8rem);
+            display: grid;
+            gap: 1.8rem;
+            grid-template-columns: repeat(4, 1fr);
         }
 
         .card {
             position: relative;
             height: 130px;
-            width: 24%;
             padding: .5rem 1rem;
+
+            @include breakpoint-down(medium) {
+                height: 110px;   
+            }
 
             &:hover {
                 svg {
@@ -196,10 +201,19 @@
                 .data {
                     font-size: 2rem;
                     font-weight: bold;
+                    z-index: 2;
                 }
 
                 .title {
                     font-size: .8rem;
+                    z-index: 2;
+                }
+
+                @include breakpoint-down(medium) {
+                    .data,
+                    .title {
+                        transform: scale(.9);
+                    }
                 }
             }
 
@@ -214,6 +228,10 @@
 
                 svg {
                     transition: .3s ease-in-out;
+                }
+
+                @include breakpoint-down(medium) {
+                    font-size: 3.5rem;
                 }
             }
         }
@@ -231,6 +249,14 @@
                     margin-top: -25px;
                     height: 120%;
                     width: 100%;
+
+                    @include breakpoint-down(large) {
+                        height: 100%;
+                    }
+
+                    @include breakpoint-down(medium) {
+                        margin-top: 2rem;
+                     }
                 }
 
                 .zoom-container {
@@ -371,7 +397,6 @@
             padding-inline: 1rem;
             color: #aaa;
             font-size: .8rem;
-            text-shadow: 0 0 0 2px black;
 
             .heart {
                 color: red;

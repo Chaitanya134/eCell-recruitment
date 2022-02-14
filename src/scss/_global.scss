@@ -12,20 +12,23 @@
 
 .App {
     @include flex($pos: null);
+    position: relative;
     height: 100vh;
 }
 
 .sidebar {
     height: 100%;
-    width: $sidebar-width;
+    width: 0;
     background: $sidebar-bg;
     transition: 1s ease-in-out;
-    width: 0;
 
     &.show {
         width: $sidebar-width;
     }
 
+    .sidebar-close {
+        display: none;
+    }
 }
 
 .main {

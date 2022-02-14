@@ -2,7 +2,7 @@
 $primary-color: #269290;
 
 // Sidebar
-$sidebar-width: max(18vw, 250px);
+$sidebar-width: clamp(18vw, 250px, 20vw);
 $sidebar-bg: #242A3A;
 $sidebar-bg-dark: #171b25;
 $sidebar-font-color: rgb(209, 206, 206);
