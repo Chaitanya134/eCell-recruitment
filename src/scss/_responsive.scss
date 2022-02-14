@@ -107,6 +107,29 @@
             }
         }
     }
+}
 
+@media (min-width: 1440px) {
 
+    .card {
+        height: 160px !important;
+
+        .content {
+            .data {
+                font-size: 3rem !important;
+            }
+
+            .title {
+                font-size: 1rem !important;
+            }
+        }
+
+        .icon {
+            font-size: 5rem !important;
+        }
+    }
+
+    .widgets {
+        margin-top: 5rem !important;
+    }
 }
